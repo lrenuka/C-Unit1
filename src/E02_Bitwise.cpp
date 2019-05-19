@@ -15,7 +15,14 @@
  */
 
 int andOfEachByte(int n) {
-    return -9999;
+	int most1 = n >> 24;
+	int result1 = n >> 16;
+	int least1 = result1 & 0xFF;
+	int result2 = n >> 8;
+	int least2 = result2 & 0xFF;
+	int least3 = n & 0xFF;
+	int output = most1 & least1 & least2 & least3;
+    return output;
 }
 
 //
@@ -23,6 +30,7 @@ int andOfEachByte(int n) {
 // implement the function using bitwise operators only
 // should not use * and + operators.
 int numberFromBits(int bits[32]) {
+
     return -9999;
 }
 
@@ -31,7 +39,17 @@ int numberFromBits(int bits[32]) {
 // implement the function using bitwise operators only
 // should not use % and / operators.
 void bitsFromNumber(int n, int bits[32]) {
-    
+	int i = 31;
+	unsigned int m = n;
+	   while(m > 0) {
+		   
+		   bits[i] = m & 1;
+		   m = m >> 1;
+		   i--;
+	}
+	   for (int j = i; j >= 0; j--) {
+		   bits[j] = 0;
+	   }
 }
 
 //
@@ -43,7 +61,18 @@ void bitsFromNumber(int n, int bits[32]) {
 // implement this function by calling above bitsFromNumber function only.
 //
 int numberOfOnesInBinary(int n) {
-    return -1;
+	int m;
+	unsigned int z = n;
+	int count = 0;
+	while (z > 0) {
+		
+		m = z & 1;
+		if (m == 1)
+			count++;
+		z = z >> 1;
+		
+	}
+    return count;
 }
 
 //
